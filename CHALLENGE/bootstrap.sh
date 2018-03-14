@@ -33,8 +33,8 @@ RAND=`awk -v min=1 -v max=$NUM 'BEGIN{srand(); print int(min+rand()*(max-min+1))
 INC=$(($RAND+1))
 PRV=$(($RAND-1))
 
-
-echo "YOU CHEATER - Page: $RAND GET Param = $EVIL"
+# Use this to learn / debug whatever.
+# echo "YOU CHEATER - Page: $RAND GET Param = $EVIL"
 
 echo '<?php if (isset($_GET['info'])) { phpinfo(); echo file_get_contents($_GET["'$EVIL'"]); } else { echo "NOPE<br/><a href=\"../'$PRV'\">PREV</a> | <a href=\"../'$INC'/\">NEXT</a>"; } ?>' > /var/www/html/1/$RAND/index.php
 
